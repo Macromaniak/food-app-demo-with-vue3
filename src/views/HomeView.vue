@@ -1,9 +1,11 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import Filters from '../components/Filters.vue'
+import FoodsListWrap from '../components/FoodListWrap.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <Filters />
+    <FoodsListWrap />
   </main>
 </template>

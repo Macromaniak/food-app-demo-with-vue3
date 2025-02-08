@@ -1,35 +1,76 @@
 @import './base.css';
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css);
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+.header,
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #ff5200;
+  color: white;
 }
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+.footer {
+  background-color: rgb(240, 240, 245) !important;
 }
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.logo {
+  width: 100px;
 }
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.search-bar {
+  padding: 8px;
+  width: 300px;
+}
+.filters {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-bottom: 1px solid #ddd;
+}
+.filter-btn {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  background: white;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  padding: 20px;
+}
+.card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+.card img {
+  width: 100%;
+  max-width: 150px;
+  border-radius: 8px;
+}
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.popup img {
+  width: 100%;
+  max-width: 300px;
+}
+.popup-close {
+  background: #ff5200;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  border: none;
 }
