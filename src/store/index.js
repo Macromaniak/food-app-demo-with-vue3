@@ -4,9 +4,11 @@ import api from '@/api/FoodApi'
 export default createStore({
   state: {
     areas: [], // List of areas (countries)
-    selectedArea: 'indian', // Selected area
+    selectedArea: 'Indian', // Selected area
     foodItems: [], // store food items
     selectedFood: null,
+    currentPage: 1, // Track current page
+    itemsPerPage: 12, // Items per page
   },
   mutations: {
     SET_AREAS(state, areas) {
@@ -20,6 +22,9 @@ export default createStore({
     },
     SET_SELECTED_FOOD(state, food) {
       state.selectedFood = food
+    },
+    SET_CURRENT_PAGE(state, page) {
+      state.currentPage = page
     },
   },
   actions: {
@@ -44,14 +49,17 @@ export default createStore({
     },
     async getFoodItems({ commit }, area) {
       try {
+        commit('SET_FOOD_ITEMS', [])
         const foodItems = await api.getFoodsByArea(area)
         commit('SET_FOOD_ITEMS', foodItems)
+        commit('SET_CURRENT_PAGE', 1) // Reset page on new fetch
         console.log(foodItems)
       } catch (error) {
         console.error(`Error fetching food items for ${area}:`, error)
       }
     },
     async getFoodDetails({ commit }, foodId) {
+      console.log('getting details ', foodId)
       try {
         const food = await api.getFoodDetails(foodId)
         commit('SET_SELECTED_FOOD', food)
@@ -69,5 +77,12 @@ export default createStore({
     getSelectedArea: (state) => state.selectedArea,
     getFoodItems: (state) => state.foodItems,
     getSelectedFood: (state) => state.selectedFood,
+    paginatedFoodItems: (state) => {
+      const start = (state.currentPage - 1) * state.itemsPerPage
+      return state.foodItems.slice(start, start + state.itemsPerPage)
+    },
+
+    totalPages: (state) => Math.ceil(state.foodItems.length / state.itemsPerPage),
+    getCurrentPage: (state) => state.currentPage,
   },
 })

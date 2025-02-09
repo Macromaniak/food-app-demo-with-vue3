@@ -1,5 +1,6 @@
 <template>
   <div class="filters">
+    <AreaFilter />
     <button class="filter-btn">
       Filter
       <span><i class="fa-solid fa-sliders"></i></span>
@@ -17,3 +18,14 @@
     <button class="filter-btn">Less than Rs. 300</button>
   </div>
 </template>
+
+<script>
+import AreaFilter from '@/components/filterItems/AreaFilter.vue'
+
+export default {
+  components: {
+    AreaFilter,
+  },
+  setup() {},
+}
+</script>
