@@ -19,7 +19,6 @@ export default {
     const totalPages = computed(() => store.getters.totalPages)
 
     const changePage = (page) => {
-      // alert(page)
       store.commit('SET_CURRENT_PAGE', page)
     }
 
@@ -27,3 +26,26 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.pagination {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.pagination button {
+  padding: 5px 10px;
+  border: none;
+  background: #ff5200;
+  color: #000;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+</style>

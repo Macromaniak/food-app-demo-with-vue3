@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <label for="area-select">Choose an Area:</label>
+  <div class="filter-btn">
     <select id="area-select" v-model="selectedArea" @change="updateSelectedArea">
       <option v-for="area in areas" :key="area.strArea" :value="area.strArea">
         {{ area.strArea }}
@@ -40,7 +39,11 @@ export default {
 
 <style scoped>
 select {
-  padding: 8px;
-  font-size: 16px;
+  padding: 0px;
+  border: none;
+  outline: 0px;
+}
+select:hover {
+  cursor: pointer;
 }
 </style>

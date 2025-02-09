@@ -15,7 +15,6 @@ export default {
     const store = useStore()
 
     const showFoodDetails = (foodId) => {
-      // alert(foodId)
       store.dispatch('getFoodDetails', foodId)
     }
 

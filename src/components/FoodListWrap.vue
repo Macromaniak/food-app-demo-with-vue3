@@ -35,11 +35,8 @@ export default {
     })
 
     onUpdated(() => {
-      console.log('food list updated', paginatedFoodItems)
       altMessage = foodItems.length === 0 ? "Can't find any items in this area!" : 'Loading Data...'
     })
-
-    console.log(foodItems)
 
     return {
       foodItems,

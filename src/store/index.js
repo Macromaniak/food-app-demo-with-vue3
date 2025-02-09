@@ -6,9 +6,10 @@ export default createStore({
     areas: [], // List of areas (countries)
     selectedArea: 'Indian', // Selected area
     foodItems: [], // store food items
-    selectedFood: null,
+    selectedFood: null, // current selected food
     currentPage: 1, // Track current page
     itemsPerPage: 12, // Items per page
+    sortOrder: 'asc', // Default sorting order
   },
   mutations: {
     SET_AREAS(state, areas) {
@@ -26,13 +27,14 @@ export default createStore({
     SET_CURRENT_PAGE(state, page) {
       state.currentPage = page
     },
+    SET_SORT_ORDER(state, order) {
+      state.sortOrder = order
+    },
   },
   actions: {
     async getAreas({ commit }) {
-      console.log('calling')
       try {
         const areas = await api.getAreas()
-        console.log(areas)
         commit('SET_AREAS', areas)
       } catch (error) {
         console.error('Error fetching areas:', error)
@@ -53,17 +55,14 @@ export default createStore({
         const foodItems = await api.getFoodsByArea(area)
         commit('SET_FOOD_ITEMS', foodItems)
         commit('SET_CURRENT_PAGE', 1) // Reset page on new fetch
-        console.log(foodItems)
       } catch (error) {
         console.error(`Error fetching food items for ${area}:`, error)
       }
     },
     async getFoodDetails({ commit }, foodId) {
-      console.log('getting details ', foodId)
       try {
         const food = await api.getFoodDetails(foodId)
         commit('SET_SELECTED_FOOD', food)
-        console.log(food)
       } catch (error) {
         console.error(`Error fetching food details:`, error)
       }
@@ -79,10 +78,22 @@ export default createStore({
     getSelectedFood: (state) => state.selectedFood,
     paginatedFoodItems: (state) => {
       const start = (state.currentPage - 1) * state.itemsPerPage
-      return state.foodItems.slice(start, start + state.itemsPerPage)
+      let sortedItems = [...state.foodItems]
+
+      sortedItems.sort((a, b) => {
+        if (state.sortOrder === 'asc') {
+          return a.strMeal.localeCompare(b.strMeal)
+        } else {
+          return b.strMeal.localeCompare(a.strMeal)
+        }
+      })
+
+      //   return state.foodItems.slice(start, start + state.itemsPerPage)
+      return sortedItems.slice(start, start + state.itemsPerPage)
     },
 
     totalPages: (state) => Math.ceil(state.foodItems.length / state.itemsPerPage),
     getCurrentPage: (state) => state.currentPage,
+    getSortOrder: (state) => state.sortOrder,
   },
 })

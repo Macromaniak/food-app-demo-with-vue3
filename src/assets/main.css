@@ -12,6 +12,7 @@
 }
 .footer {
   background-color: rgb(240, 240, 245) !important;
+  color: #000;
 }
 .logo {
   width: 100px;
@@ -51,26 +52,4 @@
   width: 100%;
   max-width: 150px;
   border-radius: 8px;
-}
-.popup {
-  /* display: none; */
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-.popup img {
-  width: 100%;
-  max-width: 300px;
-}
-.popup-close {
-  background: #ff5200;
-  color: white;
-  padding: 5px 10px;
-  cursor: pointer;
-  border: none;
 }

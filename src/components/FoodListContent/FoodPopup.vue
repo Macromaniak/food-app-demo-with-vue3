@@ -20,26 +20,9 @@
         </p>
       </div>
     </div>
-    <div>
-      <p><strong>Ingredients:</strong></p>
-      <table id="popup-ingredients">
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Qty</th>
-          </tr>
-        </thead>
-        <tr v-for="ing in 20">
-          <td v-if="selectedFood[`strIngredient${ing}`]">
-            {{ selectedFood[`strIngredient${ing}`] }}
-          </td>
-          <td v-if="selectedFood[`strMeasure${ing}`]">{{ selectedFood[`strMeasure${ing}`] }}</td>
-        </tr>
-      </table>
-    </div>
-
-    <p>
-      <strong><a :href="selectedFood.strYoutube">Watch on youtube</a></strong>
+    <IngredientsTable :selected-food="selectedFood" />
+    <p v-if="selectedFood.strYoutube">
+      <strong><a :href="selectedFood.strYoutube" target="_blank">Watch on youtube</a></strong>
     </p>
   </div>
 </template>
@@ -47,24 +30,19 @@
 <script>
 import { computed, onMounted, onUpdated } from 'vue'
 import { useStore } from 'vuex'
+import IngredientsTable from './IngredientsTable.vue'
 
 export default {
+  components: {
+    IngredientsTable,
+  },
   setup() {
     const store = useStore()
     const selectedFood = computed(() => store.state.selectedFood)
 
-    onMounted(() => {
-      console.log('popup mounted', selectedFood)
-    })
-
     const closePopup = () => {
-      console.log('closed')
       store.dispatch('clearSelectedFood')
     }
-
-    onUpdated(() => {
-      console.log('food detail updated', selectedFood)
-    })
 
     return { selectedFood, closePopup }
   },
@@ -72,6 +50,27 @@ export default {
 </script>
 
 <style scoped>
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.popup img {
+  width: 100%;
+  max-width: 300px;
+}
+.popup-close {
+  background: #ff5200;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  border: none;
+}
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -119,24 +118,5 @@ export default {
   border: none;
   padding: 5px 10px;
   cursor: pointer;
-}
-#popup-instructions {
-  font-size: 13px;
-}
-#popup-ingredients {
-  width: 100%;
-}
-
-#popup-ingredients {
-  border: 1px solid #f0f0f5;
-  border-collapse: collapse;
-}
-
-#popup-ingredients td {
-  padding: 3px;
-  font-size: 13px;
-}
-#popup-ingredients tr:nth-child(even) {
-  background-color: #f2f2f2;
 }
 </style>

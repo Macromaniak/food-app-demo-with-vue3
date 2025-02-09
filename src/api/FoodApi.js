@@ -16,7 +16,6 @@ const api = {
 
   // Get list of food items for a specific area
   getFoodsByArea: async (area) => {
-    console.log('area ', area)
     try {
       const response = await axios.get(`${BASE_URL}/filter.php?a=${area}`)
       return response.data.meals

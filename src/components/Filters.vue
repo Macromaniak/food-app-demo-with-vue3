@@ -1,14 +1,7 @@
 <template>
   <div class="filters">
     <AreaFilter />
-    <button class="filter-btn">
-      Filter
-      <span><i class="fa-solid fa-sliders"></i></span>
-    </button>
-    <button class="filter-btn">
-      Sort By
-      <span><i class="fa-solid fa-arrow-down"></i></span>
-    </button>
+    <Sort />
     <button class="filter-btn">Fast Delivery</button>
     <button class="filter-btn">New on Swiggy</button>
     <button class="filter-btn">Ratings 4.0+</button>
@@ -21,10 +14,12 @@
 
 <script>
 import AreaFilter from '@/components/filterItems/AreaFilter.vue'
+import Sort from './filterItems/Sort.vue'
 
 export default {
   components: {
     AreaFilter,
+    Sort,
   },
   setup() {},
 }
