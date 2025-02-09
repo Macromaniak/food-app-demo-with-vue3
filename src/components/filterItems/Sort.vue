@@ -1,6 +1,6 @@
 <template>
   <div class="filter-btn">
-    <select id="sort-items" v-model="sortOrder" @change="updateSortOrder">
+    <select id="sort-items" v-model="selectedSortOrder" @change="updateSortOrder">
       <option value="asc">A-Z</option>
       <option value="desc">Z-A</option>
     </select>
@@ -17,11 +17,16 @@ export default {
 
     const sortOrder = computed(() => store.state.sortOrder)
 
+    const selectedSortOrder = computed({
+      get: () => store.state.sortOrder, // Get from Vuex
+      set: (value) => store.commit('SET_SORT_ORDER', value), // Commit mutation
+    })
+
     const updateSortOrder = (event) => {
       store.commit('SET_SORT_ORDER', event.target.value)
     }
 
-    return { sortOrder, updateSortOrder }
+    return { sortOrder, updateSortOrder, selectedSortOrder }
   },
 }
 </script>

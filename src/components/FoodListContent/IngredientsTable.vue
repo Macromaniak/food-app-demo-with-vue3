@@ -24,7 +24,6 @@
 export default {
   props: ['selectedFood'],
   setup(props) {
-    console.log(props.selectedFood)
     return { selectedFood: props.selectedFood }
   },
 }

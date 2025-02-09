@@ -1,35 +1,59 @@
-# vue-dev-test
+# Vue 3 Food Listing App
 
-This template should help get you started developing with Vue 3 in Vite.
+A simple food listing app built with **Vue 3**, **Vuex**, and **TheMealDB API**.  
+Users can browse meals by region, sort them alphabetically, paginate through results, and view meal details in a popup.
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Features
 
-## Customize configuration
+- ✅ **Fetch meals by area** (e.g., Indian, Italian, Chinese)
+- ✅ **Paginate food items** (12 items per page)
+- ✅ **Sort food items alphabetically** (A-Z, Z-A)
+- ✅ **Popup for meal details** with image & description
+- ✅ **State management with Vuex**
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+---
 
-## Project Setup
+## Tech Stack
+
+- **Vue 3** (Composition API)
+- **Vuex** (State Management)
+- **Axios** (API calls)
+- **TheMealDB API** (Food data)
+
+---
+
+## Installation & Setup
+
+To run this app locally, please follow the below step by step instructions
+
+### 1️ **Clone the Repository**
+
+```sh
+git clone git@github.com:Macromaniak/Anandhu-Nadesh-Frontend-Developer.git
+or
+git clone https://github.com/Macromaniak/Anandhu-Nadesh-Frontend-Developer.git
+
+cd Anandhu-Nadesh-Frontend-Developer
+```
+
+### 2️ **Install Dependencies**
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 3️ **Run the App Locally**
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+---
 
-```sh
-npm run build
-```
+### App demo Video URL:
 
-### Lint with [ESLint](https://eslint.org/)
+https://vimeo.com/1054953412/3da570e377?share=copy
 
-```sh
-npm run lint
-```
+### App hosted URL

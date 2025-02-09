@@ -119,4 +119,30 @@ export default {
   padding: 5px 10px;
   cursor: pointer;
 }
+@media only screen and (max-width: 768px) {
+  .first-cntn-box {
+    display: block;
+  }
+  .popup-cntns {
+    padding: 0;
+  }
+  .popupimgbox {
+    width: 100%;
+    padding: 0;
+  }
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 90%; /* Use 90% instead of 100% to prevent overflow */
+    max-width: 400px; /* Adjust max-width for better responsiveness */
+    max-height: 90vh; /* Prevent it from exceeding the viewport height */
+    overflow-y: auto;
+  }
+}
 </style>
