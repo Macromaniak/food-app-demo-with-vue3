@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import FoodCard from './foodListContent/FoodCard.vue'
+import FoodCard from './FoodListContent/FoodCard.vue'
 import { computed, onMounted, onUpdated } from 'vue'
 import { useStore } from 'vuex'
-import Pagination from './foodListContent/Pagination.vue'
-import FoodPopup from './foodListContent/FoodPopup.vue'
+import Pagination from './FoodListContent/Pagination.vue'
+import FoodPopup from './FoodListContent/FoodPopup.vue'
 
 export default {
   components: {
