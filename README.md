@@ -58,4 +58,4 @@ https://vimeo.com/1054953412/3da570e377?share=copy
 
 ### App hosted URL
 
-https://anandhu-nadesh-frontend-developer-1fcov1pj5.vercel.app/
+https://anandhu-nadesh-frontend-developer.vercel.app/
